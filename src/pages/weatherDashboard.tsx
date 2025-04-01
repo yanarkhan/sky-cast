@@ -3,6 +3,7 @@ import { Button } from "../components/ui/button";
 import { useGeolocation } from "../hooks/useGeolocation";
 import WeatherSkeleton from "../components/loadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
+import { useWeatherQuery } from "../hooks/useWeatherQuery";
 
 const WeatherDashboard = () => {
   const {
@@ -11,7 +12,8 @@ const WeatherDashboard = () => {
     getLocation,
     isLoading: locationLoading,
   } = useGeolocation();
-  console.log(coordinates);
+  const weatherQuery = useWeatherQuery(coordinates);
+  console.log(weatherQuery.data);
 
   const handleRefresh = () => {
     getLocation();
