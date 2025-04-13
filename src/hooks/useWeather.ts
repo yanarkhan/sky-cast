@@ -25,7 +25,7 @@ export const useForecastQuery = (coordinates: Coordinates | null) => {
   });
 };
 
-export const useRevereseGeocodeQuery = (coordinates: Coordinates | null) => {
+export const useReverseGeocodeQuery = (coordinates: Coordinates | null) => {
   return useQuery({
     queryKey: WEATHER_KEYS.location(coordinates ?? { lat: 0, lon: 0 }),
     queryFn: () =>
