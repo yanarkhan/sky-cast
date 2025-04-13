@@ -5,9 +5,10 @@ import WeatherSkeleton from "../components/loadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
 import {
   useForecastQuery,
-  useRevereseGeocodeQuery,
+  useReverseGeocodeQuery,
   useWeatherQuery,
-} from "../hooks/useWeatherQuery";
+} from "../hooks/useWeather";
+import CurrentWeather from "../components/currentWeather";
 
 const WeatherDashboard = () => {
   const {
@@ -19,7 +20,7 @@ const WeatherDashboard = () => {
 
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
-  const locationQuery = useRevereseGeocodeQuery(coordinates);
+  const locationQuery = useReverseGeocodeQuery(coordinates);
 
   const handleRefresh = () => {
     getLocation();
@@ -105,6 +106,15 @@ const WeatherDashboard = () => {
             }`}
           />
         </Button>
+      </div>
+
+      <div className="grid gap-6">
+        <div className="">
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
+        </div>
       </div>
     </section>
   );
