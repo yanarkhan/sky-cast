@@ -3,7 +3,7 @@ import { Card, CardContent } from "./ui/card";
 
 interface CurrentWeatherProps {
   data: WeatherData;
-  location?: GeocodingResponse;
+  locationName?: GeocodingResponse;
 }
 
 const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
@@ -12,6 +12,15 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     main: { temp, feels_like, temp_min, temp_max, humidity },
     wind: { speed },
   } = data;
+
+  console.log("== DEBUG LOCATION ==");
+  console.log("Full location:", locationName);
+  console.log("Available keys:", Object.keys(locationName ?? {}));
+  console.log("Nama lokal (id):", locationName?.local_names?.id);
+  console.log("Nama fallback:", locationName?.name);
+  console.log("Negara:", locationName?.country);
+  console.log("Lat:", locationName?.lat);
+  console.log("Lon:", locationName?.lon);
   return (
     <section>
       <Card className="overflow-hidden">
