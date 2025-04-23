@@ -20,16 +20,8 @@ const WeatherDashboard = () => {
 
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
-  const locationQuery = useReverseGeocodeQuery(coordinates); 
-  
-   console.log("📍 Reverse Geocode Response:");
-   console.log(locationQuery.data?.[0]);
-   console.log("🧾 Available Keys:");
-   console.log(Object.keys(locationQuery.data?.[0] || {}));
-   console.log("🧪 Full Data (JSON):");
-   console.log(JSON.stringify(locationQuery.data?.[0], null, 2));
+  const locationQuery = useReverseGeocodeQuery(coordinates);
 
-   const locationName = locationQuery.data?.[0]; 
   const handleRefresh = () => {
     getLocation();
     if (coordinates) {
@@ -75,7 +67,7 @@ const WeatherDashboard = () => {
     );
   }
 
-  // const locationName = locationQuery.data?.[0];
+  const locationName = locationQuery.data?.[0];
 
   if (weatherQuery.error || forecastQuery.error) {
     return (
